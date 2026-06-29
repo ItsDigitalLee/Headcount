@@ -1,0 +1,769 @@
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: #F0E7D5; color: #2A1810; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ── Tokens ── */
+:root {
+  --terracotta:   #B04A2C;
+  --terracotta-d: #8A3820;
+  --cream:        #F0E7D5;
+  --cream-d:      #E5D9C2;
+  --tan:          #C6B39A;
+  --tan-d:        #A89278;
+  --dark:         #2A1810;
+  --dark-mid:     #4A2C1A;
+}
+
+/* ── Utility ── */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+/* ═══ NAV ═══ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  transition: background 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled { background: var(--cream); border-color: var(--tan); }
+.nav__inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 24px;
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav__logo { display: flex; align-items: center; gap: 10px; }
+.nav__logo svg { height: 28px; width: auto; color: var(--cream); transition: color 0.3s; }
+.nav.scrolled .nav__logo svg { color: var(--terracotta); }
+.nav__wordmark {
+  font-family: 'Bebas Neue', sans-serif; font-size: 20px;
+  letter-spacing: 0.12em; color: var(--cream); transition: color 0.3s;
+}
+.nav.scrolled .nav__wordmark { color: var(--dark); }
+.nav__links { display: flex; gap: 32px; }
+.nav__links a {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--cream); transition: opacity 0.2s;
+}
+.nav.scrolled .nav__links a { color: var(--dark); }
+.nav__links a:hover { opacity: 0.6; }
+.nav__icons { display: flex; align-items: center; gap: 16px; }
+.nav__icons button, .nav__icons a {
+  background: none; border: none; cursor: pointer;
+  color: var(--cream); transition: opacity 0.2s; position: relative;
+}
+.nav.scrolled .nav__icons button,
+.nav.scrolled .nav__icons a { color: var(--dark); }
+.nav__icons button:hover, .nav__icons a:hover { opacity: 0.6; }
+.cart-count {
+  position: absolute; top: -6px; right: -6px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--terracotta); color: var(--cream);
+  font-size: 9px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Mono', monospace;
+}
+.nav__mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+.nav__mobile-menu { display: none; border-top: 1px solid var(--tan); background: var(--cream); }
+.nav__mobile-menu a {
+  display: block; padding: 16px 24px;
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--dark); border-bottom: 1px solid var(--tan);
+}
+@media (max-width: 768px) {
+  .nav__links { display: none; }
+  .nav__mobile-toggle { display: block; }
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh; background: var(--terracotta);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; position: relative; overflow: hidden;
+}
+.hero__tagline {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--tan); opacity: 0.8; margin-bottom: 40px;
+}
+.hero__tally { width: 144px; margin-bottom: 32px; color: var(--cream); }
+.hero__wordmark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 12vw, 160px);
+  line-height: 1; color: var(--cream);
+}
+.hero__sub {
+  margin-top: 24px; font-size: 14px; line-height: 1.75;
+  text-align: center; max-width: 280px;
+  color: var(--cream); opacity: 0.75;
+}
+.hero__cta {
+  margin-top: 40px; display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 32px; font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+  background: var(--cream); color: var(--terracotta); transition: gap 0.2s;
+}
+.hero__cta:hover { gap: 20px; }
+.hero__scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  opacity: 0.5; animation: bounce 1.5s ease-in-out infinite;
+}
+.hero__dots {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.05;
+  background-image: radial-gradient(circle, var(--dark) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ═══ TICKER ═══ */
+.ticker {
+  overflow: hidden; padding: 12px 0; background: var(--dark);
+  border-top: 1px solid var(--dark-mid); border-bottom: 1px solid var(--dark-mid);
+}
+.ticker__track { display: flex; white-space: nowrap; animation: ticker 28s linear infinite; }
+.ticker__item {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--tan); padding: 0 32px;
+}
+.ticker__item--brand { color: var(--terracotta); }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+
+/* ═══ PRODUCTS ═══ */
+.products { padding: 96px 24px; background: var(--cream); }
+.section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; }
+.section-label {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--dark); opacity: 0.6; margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6vw, 80px); line-height: 1; color: var(--dark);
+}
+.view-all {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--terracotta); border-bottom: 1px solid var(--terracotta);
+  padding-bottom: 4px; transition: gap 0.2s;
+}
+.view-all:hover { gap: 16px; }
+.product-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--tan-d);
+}
+.product-card { position: relative; display: flex; flex-direction: column; cursor: pointer; }
+.product-card__img-wrap { position: relative; aspect-ratio: 4/5; overflow: hidden; }
+.product-card__img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s; }
+.product-card:hover .product-card__img-wrap img { transform: scale(1.05); }
+.product-card__tag {
+  position: absolute; top: 16px; left: 16px;
+  font-family: 'Space Mono', monospace; font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  padding: 4px 10px; background: var(--terracotta); color: var(--cream);
+}
+.product-card__overlay {
+  position: absolute; inset: 0; display: flex; align-items: flex-end;
+  justify-content: center; padding-bottom: 24px;
+  background: rgba(42,24,16,0.55); opacity: 0; transition: opacity 0.3s;
+}
+.product-card:hover .product-card__overlay { opacity: 1; }
+.product-card__atc {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  padding: 12px 24px; background: var(--cream); color: var(--terracotta);
+  border: none; cursor: pointer;
+  transform: translateY(8px); transition: transform 0.3s;
+}
+.product-card:hover .product-card__atc { transform: translateY(0); }
+.product-card__info { padding: 20px; }
+.product-card__sub {
+  font-family: 'Space Mono', monospace; font-size: 9px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--dark); opacity: 0.6; margin-bottom: 4px;
+}
+.product-card__name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--dark); margin-bottom: 8px; }
+.product-card__price { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--terracotta); }
+@media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .product-grid { grid-template-columns: 1fr; } }
+
+/* ═══ USP BAR ═══ */
+.usp-bar { background: var(--cream-d); border-top: 1px solid var(--tan); border-bottom: 1px solid var(--tan); }
+.usp-bar__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+.usp-item { padding: 32px; display: flex; flex-direction: column; gap: 8px; border-right: 1px solid var(--tan); }
+.usp-item:last-child { border-right: none; }
+.usp-item__icon { font-size: 18px; color: var(--terracotta); margin-bottom: 4px; }
+.usp-item__title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.05em; color: var(--dark); }
+.usp-item__body { font-size: 11px; line-height: 1.6; color: var(--dark); opacity: 0.6; }
+@media (max-width: 768px) {
+  .usp-bar__inner { grid-template-columns: repeat(2, 1fr); }
+  .usp-item { border-bottom: 1px solid var(--tan); }
+}
+
+/* ═══ SHOP BY STYLE ═══ */
+.style-section { padding: 96px 24px; background: var(--dark); }
+.style-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--dark-mid); }
+.style-card { position: relative; overflow: hidden; display: block; aspect-ratio: 3/4; }
+.style-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.7s, opacity 0.3s; }
+.style-card:hover img { transform: scale(1.1); opacity: 1; }
+.style-card__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(42,24,16,0.95) 0%, transparent 60%);
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
+}
+.style-card__count {
+  font-family: 'Space Mono', monospace; font-size: 9px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--cream); opacity: 0.6; margin-bottom: 4px;
+}
+.style-card__name { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--cream); }
+@media (max-width: 768px) { .style-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ═══ EDITORIAL ═══ */
+.editorial { background: var(--terracotta); }
+.editorial__inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+.editorial__img { overflow: hidden; }
+.editorial__img img { width: 100%; height: 100%; object-fit: cover; object-position: top; min-height: 480px; }
+.editorial__copy { display: flex; flex-direction: column; justify-content: center; padding: 80px 48px; }
+.editorial__kicker {
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.5em; text-transform: uppercase;
+  color: var(--cream); opacity: 0.6; margin-bottom: 32px;
+}
+.editorial__title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 6vw, 88px); line-height: 1;
+  color: var(--cream); margin-bottom: 32px;
+}
+.editorial__title span { color: var(--dark); }
+.editorial__body { font-size: 14px; line-height: 2; max-width: 300px; color: var(--cream); opacity: 0.75; margin-bottom: 40px; }
+.editorial__cta {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 16px 32px; font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+  background: var(--dark); color: var(--cream); transition: gap 0.2s; width: fit-content;
+}
+.editorial__cta:hover { gap: 20px; }
+@media (max-width: 768px) {
+  .editorial__inner { grid-template-columns: 1fr; }
+  .editorial__copy { padding: 48px 24px; }
+}
+
+/* ═══ REVIEWS ═══ */
+.reviews { padding: 96px 24px; background: var(--cream); }
+.reviews__header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 24px; flex-wrap: wrap; }
+.reviews__rating { display: flex; align-items: center; gap: 10px; }
+.stars { display: flex; gap: 3px; }
+.star {
+  width: 13px; height: 13px; background: var(--terracotta);
+  clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.reviews__score { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--dark); opacity: 0.6; }
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--tan); }
+.review-card { background: var(--cream); padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+.review-card__text { font-size: 14px; line-height: 1.75; color: var(--dark); opacity: 0.8; flex: 1; }
+.review-card__footer { border-top: 1px solid var(--tan); padding-top: 20px; }
+.review-card__name { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.05em; color: var(--dark); }
+.review-card__meta { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--dark); opacity: 0.5; margin-top: 4px; }
+@media (max-width: 768px) { .review-grid { grid-template-columns: 1fr; } }
+
+/* ═══ BRAND STORY ═══ */
+.story { padding: 128px 24px; background: var(--dark); position: relative; overflow: hidden; }
+.story__inner { max-width: 1024px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.story__kicker { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; color: var(--cream); opacity: 0.5; margin-bottom: 24px; }
+.story__title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 7vw, 96px); line-height: 1; color: var(--cream); }
+.story__title span { color: var(--terracotta); }
+.story__body { font-size: 15px; line-height: 2; color: var(--cream); opacity: 0.7; margin-bottom: 24px; }
+.story__link {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: 'Space Mono', monospace; font-size: 10px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--terracotta); border-bottom: 1px solid var(--terracotta-d);
+  padding-bottom: 4px; margin-top: 16px; transition: gap 0.2s;
+}
+.story__link:hover { gap: 20px; }
+.story__watermark { position: absolute; right: -64px; top: 50%; transform: translateY(-50%); width: 380px; opacity: 0.08; pointer-events: none; color: var(--dark-mid); }
+@media (max-width: 768px) { .story__inner { grid-template-columns: 1fr; } .story__watermark { display: none; } }
+
+/* ═══ NEWSLETTER ═══ */
+.newsletter { padding: 112px 24px; background: var(--terracotta); text-align: center; }
+.newsletter__tally { width: 80px; margin: 0 auto 32px; opacity: 0.2; }
+.newsletter__title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 72px); line-height: 1; color: var(--cream); margin-bottom: 24px; }
+.newsletter__body { font-size: 14px; line-height: 1.875; color: var(--cream); opacity: 0.7; margin-bottom: 40px; }
+.newsletter__form { display: flex; max-width: 420px; margin: 0 auto; gap: 1px; }
+.newsletter__input {
+  flex: 1; padding: 16px 20px; font-family: 'Space Mono', monospace; font-size: 13px;
+  background: rgba(42,24,16,0.2); border: 1px solid rgba(240,231,213,0.4);
+  color: var(--cream); outline: none;
+}
+.newsletter__input::placeholder { color: rgba(240,231,213,0.5); }
+.newsletter__btn {
+  padding: 16px 32px; font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+  background: var(--cream); color: var(--terracotta);
+  border: none; cursor: pointer; transition: opacity 0.2s;
+}
+.newsletter__btn:hover { opacity: 0.85; }
+@media (max-width: 500px) { .newsletter__form { flex-direction: column; } }
+
+/* ═══ FOOTER ═══ */
+.footer { padding: 80px 24px 40px; background: var(--dark); }
+.footer__grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 48px;
+  margin-bottom: 64px; padding-bottom: 64px;
+  border-bottom: 1px solid rgba(240,231,213,0.08);
+}
+.footer__brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+.footer__brand-logo svg { height: 24px; width: auto; color: var(--terracotta); }
+.footer__brand-wordmark { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.12em; color: var(--cream); }
+.footer__brand-desc { font-size: 12px; line-height: 1.7; color: var(--cream); opacity: 0.4; max-width: 160px; }
+.footer__social { display: flex; gap: 16px; margin-top: 32px; }
+.footer__social a { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.4em; color: var(--cream); opacity: 0.4; transition: opacity 0.2s; }
+.footer__social a:hover { opacity: 0.9; }
+.footer__col-title { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--cream); opacity: 0.4; margin-bottom: 24px; }
+.footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.footer__col ul a { font-size: 12px; color: var(--cream); opacity: 0.5; transition: opacity 0.2s; }
+.footer__col ul a:hover { opacity: 0.9; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer__copyright,
+.footer__tagline { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--cream); opacity: 0.3; }
+@media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .footer__grid { grid-template-columns: 1fr; } }
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Headcount. — The People's Index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="main-nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">
+        <svg viewBox="0 0 200 240" fill="none" aria-hidden="true">
+          <rect x="12" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+          <rect x="60" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+          <rect x="108" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+          <rect x="156" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+          <rect x="-10" y="84" width="220" height="26" rx="3" fill="currentColor" transform="rotate(-22 90 97)"/>
+        </svg>
+        <span class="nav__wordmark">HEADCOUNT.</span>
+      </a>
+      <div class="nav__links">
+        <a href="#shop">Shop</a>
+        <a href="#style">Lookbook</a>
+        <a href="#story">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="nav__icons">
+        <button aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="#" aria-label="Cart" style="position:relative;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count">0</span>
+        </a>
+        <button class="nav__mobile-toggle" id="mobile-toggle" aria-label="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav__mobile-menu" id="mobile-menu">
+      <a href="#shop">Shop</a>
+      <a href="#">Lookbook</a>
+      <a href="#story">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero__tagline">The People&rsquo;s Index</p>
+    <svg class="hero__tally" viewBox="0 0 200 240" fill="currentColor" aria-hidden="true">
+      <rect x="12" y="12" width="26" height="168" rx="3"/>
+      <rect x="60" y="12" width="26" height="168" rx="3"/>
+      <rect x="108" y="12" width="26" height="168" rx="3"/>
+      <rect x="156" y="12" width="26" height="168" rx="3"/>
+      <rect x="-10" y="84" width="220" height="26" rx="3" transform="rotate(-22 90 97)"/>
+    </svg>
+    <h1 class="hero__wordmark">Headcount.</h1>
+    <p class="hero__sub">Hats for the counted. Caps for the collective.<br>Every head, every story.</p>
+    <a href="#shop" class="hero__cta">
+      Shop Now
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="hero__scroll">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F0E7D5" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="hero__dots"></div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker__track">
+      <span class="ticker__item">Free Shipping Over $100 &middot;</span>
+      <span class="ticker__item">The People&rsquo;s Index &middot;</span>
+      <span class="ticker__item">New Arrivals Dropping Weekly &middot;</span>
+      <span class="ticker__item">Limited Edition Drops &middot;</span>
+      <span class="ticker__item ticker__item--brand">Headcount. &middot;</span>
+      <span class="ticker__item">Free Shipping Over $100 &middot;</span>
+      <span class="ticker__item">The People&rsquo;s Index &middot;</span>
+      <span class="ticker__item">New Arrivals Dropping Weekly &middot;</span>
+      <span class="ticker__item">Limited Edition Drops &middot;</span>
+      <span class="ticker__item ticker__item--brand">Headcount. &middot;</span>
+      <span class="ticker__item">Free Shipping Over $100 &middot;</span>
+      <span class="ticker__item">The People&rsquo;s Index &middot;</span>
+      <span class="ticker__item">New Arrivals Dropping Weekly &middot;</span>
+      <span class="ticker__item">Limited Edition Drops &middot;</span>
+      <span class="ticker__item ticker__item--brand">Headcount. &middot;</span>
+    </div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="products" id="shop">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-label">&mdash; The Collection</p>
+          <h2 class="section-title">New Arrivals</h2>
+        </div>
+        <a href="#" class="view-all">
+          View All
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card" style="background:var(--cream-d);">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1578991480240-5a2cbc1bfbd3?w=600&q=80" alt="The Standard Five" loading="lazy"/>
+            <span class="product-card__tag">Bestseller</span>
+            <div class="product-card__overlay">
+              <button class="product-card__atc">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__sub">Fitted Cap</p>
+            <h3 class="product-card__name">The Standard Five</h3>
+            <p class="product-card__price">$68.00</p>
+          </div>
+        </div>
+
+        <div class="product-card" style="background:var(--tan);">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1523380744952-b7e00e6e2ffa?w=600&q=80" alt="Collective No. 2" loading="lazy"/>
+            <span class="product-card__tag">New</span>
+            <div class="product-card__overlay">
+              <button class="product-card__atc">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__sub">Structured Cap</p>
+            <h3 class="product-card__name">Collective No. 2</h3>
+            <p class="product-card__price">$72.00</p>
+          </div>
+        </div>
+
+        <div class="product-card" style="background:var(--cream-d);">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1613308547351-ad95bd7b7e14?w=600&q=80" alt="The Tally" loading="lazy"/>
+            <span class="product-card__tag">Limited</span>
+            <div class="product-card__overlay">
+              <button class="product-card__atc">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__sub">Bucket Hat</p>
+            <h3 class="product-card__name">The Tally</h3>
+            <p class="product-card__price">$58.00</p>
+          </div>
+        </div>
+
+        <div class="product-card" style="background:var(--terracotta);">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1466992133056-ae8de8e22809?w=600&q=80" alt="Index Mark" loading="lazy"/>
+            <span class="product-card__tag">New</span>
+            <div class="product-card__overlay">
+              <button class="product-card__atc">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__sub" style="color:var(--cream);">Snapback</p>
+            <h3 class="product-card__name" style="color:var(--cream);">Index Mark</h3>
+            <p class="product-card__price" style="color:var(--cream-d);">$64.00</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- USP BAR -->
+  <div class="usp-bar">
+    <div class="usp-bar__inner">
+      <div class="usp-item">
+        <div class="usp-item__icon">✦</div>
+        <p class="usp-item__title">Free Shipping</p>
+        <p class="usp-item__body">On all orders over $100</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item__icon">↩</div>
+        <p class="usp-item__title">30-Day Returns</p>
+        <p class="usp-item__body">No questions, no hassle</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item__icon">⬡</div>
+        <p class="usp-item__title">Limited Runs</p>
+        <p class="usp-item__body">Each style capped at 500 units</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item__icon">◎</div>
+        <p class="usp-item__title">Ethically Made</p>
+        <p class="usp-item__body">Responsible sourcing, always</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP BY STYLE -->
+  <section class="style-section" id="style">
+    <div class="container">
+      <div style="margin-bottom:56px;">
+        <p class="section-label" style="color:var(--cream);opacity:0.4;">&mdash; Browse</p>
+        <h2 class="section-title" style="color:var(--cream);">Shop by Style</h2>
+      </div>
+      <div class="style-grid">
+        <a href="#" class="style-card">
+          <img src="https://images.unsplash.com/photo-1609868656710-4f299e957ec5?w=600&q=80" alt="Fitted Caps" loading="lazy"/>
+          <div class="style-card__overlay">
+            <p class="style-card__count">12 styles</p>
+            <p class="style-card__name">Fitted Caps</p>
+          </div>
+        </a>
+        <a href="#" class="style-card">
+          <img src="https://images.unsplash.com/photo-1627608172726-8f621568ca28?w=600&q=80" alt="Bucket Hats" loading="lazy"/>
+          <div class="style-card__overlay">
+            <p class="style-card__count">8 styles</p>
+            <p class="style-card__name">Bucket Hats</p>
+          </div>
+        </a>
+        <a href="#" class="style-card">
+          <img src="https://images.unsplash.com/photo-1643191831906-ee29a655cdd6?w=600&q=80" alt="Snapbacks" loading="lazy"/>
+          <div class="style-card__overlay">
+            <p class="style-card__count">10 styles</p>
+            <p class="style-card__name">Snapbacks</p>
+          </div>
+        </a>
+        <a href="#" class="style-card">
+          <img src="https://images.unsplash.com/photo-1748079651854-39b7cf697ef4?w=600&q=80" alt="Beanies" loading="lazy"/>
+          <div class="style-card__overlay">
+            <p class="style-card__count">6 styles</p>
+            <p class="style-card__name">Beanies</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL -->
+  <section class="editorial">
+    <div class="editorial__inner">
+      <div class="editorial__img">
+        <img src="https://images.unsplash.com/photo-1741848885178-b753c8f23d12?w=900&q=80" alt="SS25 Drop editorial" loading="lazy"/>
+      </div>
+      <div class="editorial__copy">
+        <p class="editorial__kicker">&mdash; SS25 Drop</p>
+        <h2 class="editorial__title">The People&rsquo;s<br><span>Drop.</span></h2>
+        <p class="editorial__body">Five new colourways. Unstructured brim. Cotton twill with a broken-in feel from day one. Made for the streets, counted for the culture.</p>
+        <a href="#shop" class="editorial__cta">
+          Shop the Drop
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <div class="container">
+      <div class="reviews__header">
+        <div>
+          <p class="section-label">&mdash; Social Proof</p>
+          <h2 class="section-title">The Count.</h2>
+        </div>
+        <div class="reviews__rating">
+          <div class="stars">
+            <div class="star"></div><div class="star"></div><div class="star"></div>
+            <div class="star"></div><div class="star"></div>
+          </div>
+          <p class="reviews__score">4.9 / 5 from 840 reviews</p>
+        </div>
+      </div>
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-card__text">&ldquo;Best structured cap I&rsquo;ve owned. The fit is dialled, the quality is there. People ask about it constantly.&rdquo;</p>
+          <div class="review-card__footer">
+            <p class="review-card__name">Marcus T.</p>
+            <p class="review-card__meta">Brooklyn, NY &middot; The Standard Five</p>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-card__text">&ldquo;Arrived in two days, fit perfectly straight out of the bag. The terracotta colourway is exactly what I needed.&rdquo;</p>
+          <div class="review-card__footer">
+            <p class="review-card__name">Priya K.</p>
+            <p class="review-card__meta">East London &middot; Collective No. 2</p>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-card__text">&ldquo;Bucket hat season, sorted. Lightweight, holds its shape, and the tally logo on the back is a nice touch.&rdquo;</p>
+          <div class="review-card__footer">
+            <p class="review-card__name">Jordan L.</p>
+            <p class="review-card__meta">Melbourne, AU &middot; The Tally</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section class="story" id="story">
+    <div class="story__inner">
+      <div>
+        <p class="story__kicker">&mdash; Our Story</p>
+        <h2 class="story__title">For Every<br><span>Head</span><br>Counted.</h2>
+      </div>
+      <div>
+        <p class="story__body">Headcount started as a tally — a record of the people who showed up. We make hats that carry that idea forward: every cap is a mark of presence, a vote cast in fabric and thread.</p>
+        <p class="story__body">Five styles. Four colourways. One community. Whether you pull the brim low or wear it back, you&rsquo;re in the count.</p>
+        <a href="#" class="story__link">
+          Read More
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <svg class="story__watermark" viewBox="0 0 200 240" fill="currentColor" aria-hidden="true">
+      <rect x="12" y="12" width="26" height="168" rx="3"/><rect x="60" y="12" width="26" height="168" rx="3"/>
+      <rect x="108" y="12" width="26" height="168" rx="3"/><rect x="156" y="12" width="26" height="168" rx="3"/>
+      <rect x="-10" y="84" width="220" height="26" rx="3" transform="rotate(-22 90 97)"/>
+    </svg>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <svg class="newsletter__tally" viewBox="0 0 200 240" fill="var(--cream)" aria-hidden="true">
+      <rect x="12" y="12" width="26" height="168" rx="3"/><rect x="60" y="12" width="26" height="168" rx="3"/>
+      <rect x="108" y="12" width="26" height="168" rx="3"/><rect x="156" y="12" width="26" height="168" rx="3"/>
+      <rect x="-10" y="84" width="220" height="26" rx="3" transform="rotate(-22 90 97)"/>
+    </svg>
+    <h2 class="newsletter__title">Join the Count.</h2>
+    <p class="newsletter__body">New drops, restocks, and field notes &mdash; direct to your inbox.<br>No noise. Just the count.</p>
+    <form class="newsletter__form" onsubmit="handleSubscribe(event)">
+      <input type="email" class="newsletter__input" placeholder="your@email.com" required aria-label="Email address"/>
+      <button type="submit" class="newsletter__btn">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-logo">
+          <svg viewBox="0 0 200 240" fill="none" aria-hidden="true">
+            <rect x="12" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+            <rect x="60" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+            <rect x="108" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+            <rect x="156" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+            <rect x="-10" y="84" width="220" height="26" rx="3" fill="currentColor" transform="rotate(-22 90 97)"/>
+          </svg>
+          <span class="footer__brand-wordmark">HEADCOUNT.</span>
+        </div>
+        <p class="footer__brand-desc">The People&rsquo;s Index. Hats for the counted, since 2024.</p>
+        <div class="footer__social">
+          <a href="#">IG</a><a href="#">TK</a><a href="#">X</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Shop</p>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Fitted Caps</a></li>
+          <li><a href="#">Bucket Hats</a></li>
+          <li><a href="#">Snapbacks</a></li>
+          <li><a href="#">All Styles</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Company</p>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Lookbook</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Support</p>
+        <ul>
+          <li><a href="#">Sizing Guide</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; 2024 Headcount. All rights reserved.</p>
+      <p class="footer__tagline">The People&rsquo;s Index</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+    toggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.style.display = menuOpen ? 'block' : 'none';
+    });
+
+    // Add to cart feedback
+    document.querySelectorAll('.product-card__atc').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        btn.textContent = 'Added ✓';
+        setTimeout(() => { btn.textContent = 'Add to Cart'; }, 2000);
+      });
+    });
+
+    // Newsletter
+    function handleSubscribe(e) {
+      e.preventDefault();
+      e.target.innerHTML = '<p style="font-family:\'Space Mono\',monospace;font-size:12px;letter-spacing:0.4em;text-transform:uppercase;color:var(--cream);opacity:0.8;">You\'re in the count. ✓</p>';
+    }
+  </script>
+
+</body>
+</html>
