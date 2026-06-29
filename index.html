@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Headcount. — The People's Index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="main-nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">
+        <svg viewBox="0 0 200 240" fill="none" aria-hidden="true">
+          <rect x="12" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+          <rect x="60" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+          <rect x="108" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+          <rect x="156" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+          <rect x="-10" y="84" width="220" height="26" rx="3" fill="currentColor" transform="rotate(-22 90 97)"/>
+        </svg>
+        <span class="nav__wordmark">HEADCOUNT.</span>
+      </a>
+      <div class="nav__links">
+        <a href="#shop">Shop</a>
+        <a href="#style">Lookbook</a>
+        <a href="#story">About</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="nav__icons">
+        <button aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="#" aria-label="Cart" style="position:relative;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-count">0</span>
+        </a>
+        <button class="nav__mobile-toggle" id="mobile-toggle" aria-label="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="nav__mobile-menu" id="mobile-menu">
+      <a href="#shop">Shop</a>
+      <a href="#">Lookbook</a>
+      <a href="#story">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero__tagline">The People&rsquo;s Index</p>
+    <svg class="hero__tally" viewBox="0 0 200 240" fill="currentColor" aria-hidden="true">
+      <rect x="12" y="12" width="26" height="168" rx="3"/>
+      <rect x="60" y="12" width="26" height="168" rx="3"/>
+      <rect x="108" y="12" width="26" height="168" rx="3"/>
+      <rect x="156" y="12" width="26" height="168" rx="3"/>
+      <rect x="-10" y="84" width="220" height="26" rx="3" transform="rotate(-22 90 97)"/>
+    </svg>
+    <h1 class="hero__wordmark">Headcount.</h1>
+    <p class="hero__sub">Hats for the counted. Caps for the collective.<br>Every head, every story.</p>
+    <a href="#shop" class="hero__cta">
+      Shop Now
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <div class="hero__scroll">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F0E7D5" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+    <div class="hero__dots"></div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker__track">
+      <span class="ticker__item">Free Shipping Over $100 &middot;</span>
+      <span class="ticker__item">The People&rsquo;s Index &middot;</span>
+      <span class="ticker__item">New Arrivals Dropping Weekly &middot;</span>
+      <span class="ticker__item">Limited Edition Drops &middot;</span>
+      <span class="ticker__item ticker__item--brand">Headcount. &middot;</span>
+      <span class="ticker__item">Free Shipping Over $100 &middot;</span>
+      <span class="ticker__item">The People&rsquo;s Index &middot;</span>
+      <span class="ticker__item">New Arrivals Dropping Weekly &middot;</span>
+      <span class="ticker__item">Limited Edition Drops &middot;</span>
+      <span class="ticker__item ticker__item--brand">Headcount. &middot;</span>
+      <span class="ticker__item">Free Shipping Over $100 &middot;</span>
+      <span class="ticker__item">The People&rsquo;s Index &middot;</span>
+      <span class="ticker__item">New Arrivals Dropping Weekly &middot;</span>
+      <span class="ticker__item">Limited Edition Drops &middot;</span>
+      <span class="ticker__item ticker__item--brand">Headcount. &middot;</span>
+    </div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="products" id="shop">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-label">&mdash; The Collection</p>
+          <h2 class="section-title">New Arrivals</h2>
+        </div>
+        <a href="#" class="view-all">
+          View All
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="product-grid">
+
+        <div class="product-card" style="background:var(--cream-d);">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1578991480240-5a2cbc1bfbd3?w=600&q=80" alt="The Standard Five" loading="lazy"/>
+            <span class="product-card__tag">Bestseller</span>
+            <div class="product-card__overlay">
+              <button class="product-card__atc">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__sub">Fitted Cap</p>
+            <h3 class="product-card__name">The Standard Five</h3>
+            <p class="product-card__price">$68.00</p>
+          </div>
+        </div>
+
+        <div class="product-card" style="background:var(--tan);">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1523380744952-b7e00e6e2ffa?w=600&q=80" alt="Collective No. 2" loading="lazy"/>
+            <span class="product-card__tag">New</span>
+            <div class="product-card__overlay">
+              <button class="product-card__atc">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__sub">Structured Cap</p>
+            <h3 class="product-card__name">Collective No. 2</h3>
+            <p class="product-card__price">$72.00</p>
+          </div>
+        </div>
+
+        <div class="product-card" style="background:var(--cream-d);">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1613308547351-ad95bd7b7e14?w=600&q=80" alt="The Tally" loading="lazy"/>
+            <span class="product-card__tag">Limited</span>
+            <div class="product-card__overlay">
+              <button class="product-card__atc">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__sub">Bucket Hat</p>
+            <h3 class="product-card__name">The Tally</h3>
+            <p class="product-card__price">$58.00</p>
+          </div>
+        </div>
+
+        <div class="product-card" style="background:var(--terracotta);">
+          <div class="product-card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1466992133056-ae8de8e22809?w=600&q=80" alt="Index Mark" loading="lazy"/>
+            <span class="product-card__tag">New</span>
+            <div class="product-card__overlay">
+              <button class="product-card__atc">Add to Cart</button>
+            </div>
+          </div>
+          <div class="product-card__info">
+            <p class="product-card__sub" style="color:var(--cream);">Snapback</p>
+            <h3 class="product-card__name" style="color:var(--cream);">Index Mark</h3>
+            <p class="product-card__price" style="color:var(--cream-d);">$64.00</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- USP BAR -->
+  <div class="usp-bar">
+    <div class="usp-bar__inner">
+      <div class="usp-item">
+        <div class="usp-item__icon">✦</div>
+        <p class="usp-item__title">Free Shipping</p>
+        <p class="usp-item__body">On all orders over $100</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item__icon">↩</div>
+        <p class="usp-item__title">30-Day Returns</p>
+        <p class="usp-item__body">No questions, no hassle</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item__icon">⬡</div>
+        <p class="usp-item__title">Limited Runs</p>
+        <p class="usp-item__body">Each style capped at 500 units</p>
+      </div>
+      <div class="usp-item">
+        <div class="usp-item__icon">◎</div>
+        <p class="usp-item__title">Ethically Made</p>
+        <p class="usp-item__body">Responsible sourcing, always</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP BY STYLE -->
+  <section class="style-section" id="style">
+    <div class="container">
+      <div style="margin-bottom:56px;">
+        <p class="section-label" style="color:var(--cream);opacity:0.4;">&mdash; Browse</p>
+        <h2 class="section-title" style="color:var(--cream);">Shop by Style</h2>
+      </div>
+      <div class="style-grid">
+        <a href="#" class="style-card">
+          <img src="https://images.unsplash.com/photo-1609868656710-4f299e957ec5?w=600&q=80" alt="Fitted Caps" loading="lazy"/>
+          <div class="style-card__overlay">
+            <p class="style-card__count">12 styles</p>
+            <p class="style-card__name">Fitted Caps</p>
+          </div>
+        </a>
+        <a href="#" class="style-card">
+          <img src="https://images.unsplash.com/photo-1627608172726-8f621568ca28?w=600&q=80" alt="Bucket Hats" loading="lazy"/>
+          <div class="style-card__overlay">
+            <p class="style-card__count">8 styles</p>
+            <p class="style-card__name">Bucket Hats</p>
+          </div>
+        </a>
+        <a href="#" class="style-card">
+          <img src="https://images.unsplash.com/photo-1643191831906-ee29a655cdd6?w=600&q=80" alt="Snapbacks" loading="lazy"/>
+          <div class="style-card__overlay">
+            <p class="style-card__count">10 styles</p>
+            <p class="style-card__name">Snapbacks</p>
+          </div>
+        </a>
+        <a href="#" class="style-card">
+          <img src="https://images.unsplash.com/photo-1748079651854-39b7cf697ef4?w=600&q=80" alt="Beanies" loading="lazy"/>
+          <div class="style-card__overlay">
+            <p class="style-card__count">6 styles</p>
+            <p class="style-card__name">Beanies</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL -->
+  <section class="editorial">
+    <div class="editorial__inner">
+      <div class="editorial__img">
+        <img src="https://images.unsplash.com/photo-1741848885178-b753c8f23d12?w=900&q=80" alt="SS25 Drop editorial" loading="lazy"/>
+      </div>
+      <div class="editorial__copy">
+        <p class="editorial__kicker">&mdash; SS25 Drop</p>
+        <h2 class="editorial__title">The People&rsquo;s<br><span>Drop.</span></h2>
+        <p class="editorial__body">Five new colourways. Unstructured brim. Cotton twill with a broken-in feel from day one. Made for the streets, counted for the culture.</p>
+        <a href="#shop" class="editorial__cta">
+          Shop the Drop
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <div class="container">
+      <div class="reviews__header">
+        <div>
+          <p class="section-label">&mdash; Social Proof</p>
+          <h2 class="section-title">The Count.</h2>
+        </div>
+        <div class="reviews__rating">
+          <div class="stars">
+            <div class="star"></div><div class="star"></div><div class="star"></div>
+            <div class="star"></div><div class="star"></div>
+          </div>
+          <p class="reviews__score">4.9 / 5 from 840 reviews</p>
+        </div>
+      </div>
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-card__text">&ldquo;Best structured cap I&rsquo;ve owned. The fit is dialled, the quality is there. People ask about it constantly.&rdquo;</p>
+          <div class="review-card__footer">
+            <p class="review-card__name">Marcus T.</p>
+            <p class="review-card__meta">Brooklyn, NY &middot; The Standard Five</p>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-card__text">&ldquo;Arrived in two days, fit perfectly straight out of the bag. The terracotta colourway is exactly what I needed.&rdquo;</p>
+          <div class="review-card__footer">
+            <p class="review-card__name">Priya K.</p>
+            <p class="review-card__meta">East London &middot; Collective No. 2</p>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+          <p class="review-card__text">&ldquo;Bucket hat season, sorted. Lightweight, holds its shape, and the tally logo on the back is a nice touch.&rdquo;</p>
+          <div class="review-card__footer">
+            <p class="review-card__name">Jordan L.</p>
+            <p class="review-card__meta">Melbourne, AU &middot; The Tally</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section class="story" id="story">
+    <div class="story__inner">
+      <div>
+        <p class="story__kicker">&mdash; Our Story</p>
+        <h2 class="story__title">For Every<br><span>Head</span><br>Counted.</h2>
+      </div>
+      <div>
+        <p class="story__body">Headcount started as a tally — a record of the people who showed up. We make hats that carry that idea forward: every cap is a mark of presence, a vote cast in fabric and thread.</p>
+        <p class="story__body">Five styles. Four colourways. One community. Whether you pull the brim low or wear it back, you&rsquo;re in the count.</p>
+        <a href="#" class="story__link">
+          Read More
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <svg class="story__watermark" viewBox="0 0 200 240" fill="currentColor" aria-hidden="true">
+      <rect x="12" y="12" width="26" height="168" rx="3"/><rect x="60" y="12" width="26" height="168" rx="3"/>
+      <rect x="108" y="12" width="26" height="168" rx="3"/><rect x="156" y="12" width="26" height="168" rx="3"/>
+      <rect x="-10" y="84" width="220" height="26" rx="3" transform="rotate(-22 90 97)"/>
+    </svg>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <svg class="newsletter__tally" viewBox="0 0 200 240" fill="var(--cream)" aria-hidden="true">
+      <rect x="12" y="12" width="26" height="168" rx="3"/><rect x="60" y="12" width="26" height="168" rx="3"/>
+      <rect x="108" y="12" width="26" height="168" rx="3"/><rect x="156" y="12" width="26" height="168" rx="3"/>
+      <rect x="-10" y="84" width="220" height="26" rx="3" transform="rotate(-22 90 97)"/>
+    </svg>
+    <h2 class="newsletter__title">Join the Count.</h2>
+    <p class="newsletter__body">New drops, restocks, and field notes &mdash; direct to your inbox.<br>No noise. Just the count.</p>
+    <form class="newsletter__form" onsubmit="handleSubscribe(event)">
+      <input type="email" class="newsletter__input" placeholder="your@email.com" required aria-label="Email address"/>
+      <button type="submit" class="newsletter__btn">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-logo">
+          <svg viewBox="0 0 200 240" fill="none" aria-hidden="true">
+            <rect x="12" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+            <rect x="60" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+            <rect x="108" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+            <rect x="156" y="12" width="26" height="168" rx="3" fill="currentColor"/>
+            <rect x="-10" y="84" width="220" height="26" rx="3" fill="currentColor" transform="rotate(-22 90 97)"/>
+          </svg>
+          <span class="footer__brand-wordmark">HEADCOUNT.</span>
+        </div>
+        <p class="footer__brand-desc">The People&rsquo;s Index. Hats for the counted, since 2024.</p>
+        <div class="footer__social">
+          <a href="#">IG</a><a href="#">TK</a><a href="#">X</a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Shop</p>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Fitted Caps</a></li>
+          <li><a href="#">Bucket Hats</a></li>
+          <li><a href="#">Snapbacks</a></li>
+          <li><a href="#">All Styles</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Company</p>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Lookbook</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Support</p>
+        <ul>
+          <li><a href="#">Sizing Guide</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copyright">&copy; 2024 Headcount. All rights reserved.</p>
+      <p class="footer__tagline">The People&rsquo;s Index</p>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+    toggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.style.display = menuOpen ? 'block' : 'none';
+    });
+
+    // Add to cart feedback
+    document.querySelectorAll('.product-card__atc').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        btn.textContent = 'Added ✓';
+        setTimeout(() => { btn.textContent = 'Add to Cart'; }, 2000);
+      });
+    });
+
+    // Newsletter
+    function handleSubscribe(e) {
+      e.preventDefault();
+      e.target.innerHTML = '<p style="font-family:\'Space Mono\',monospace;font-size:12px;letter-spacing:0.4em;text-transform:uppercase;color:var(--cream);opacity:0.8;">You\'re in the count. ✓</p>';
+    }
+  </script>
+
+</body>
+</html>
